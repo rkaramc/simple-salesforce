@@ -104,6 +104,7 @@ def SalesforceLogin(**kwargs):
     response = requests.post(soap_url,
                              login_soap_request_body,
                              headers=login_soap_request_headers,
+                             verify=False,
                              proxies=kwargs.get('proxies', None))
 
     if response.status_code != 200:

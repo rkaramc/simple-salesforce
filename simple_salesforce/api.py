@@ -347,7 +347,16 @@ class Salesforce(object):
 
         Returns a `requests.result` object.
         """
-        result = self.request.request(method, url, headers=self.headers, **kwargs)
+<<<<<<< Updated upstream
+        result = self.request.request(method, url, headers=self.headers, verify=False, **kwargs)
+=======
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + self.session_id,
+            'X-PrettyPrint': '1'
+        }
+        result = self.request.request(method, url, headers=headers, verify=False, **kwargs)
+>>>>>>> Stashed changes
 
         if result.status_code >= 300:
             _exception_handler(result)
@@ -508,7 +517,7 @@ class SFType(object):
             'Authorization': 'Bearer ' + self.session_id,
             'X-PrettyPrint': '1'
         }
-        result = self.request.request(method, url, headers=headers, **kwargs)
+        result = self.request.request(method, url, headers=headers, verify=False, **kwargs)
 
         if result.status_code >= 300:
             _exception_handler(result, self.name)
