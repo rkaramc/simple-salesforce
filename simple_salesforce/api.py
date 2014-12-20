@@ -347,16 +347,7 @@ class Salesforce(object):
 
         Returns a `requests.result` object.
         """
-<<<<<<< Updated upstream
         result = self.request.request(method, url, headers=self.headers, verify=False, **kwargs)
-=======
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + self.session_id,
-            'X-PrettyPrint': '1'
-        }
-        result = self.request.request(method, url, headers=headers, verify=False, **kwargs)
->>>>>>> Stashed changes
 
         if result.status_code >= 300:
             _exception_handler(result)
